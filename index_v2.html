@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Ideal Meal - Finding the perfect meal for you to make!</title>
+	<script src="https://use.fontawesome.com/71f27b38fa.js"></script>
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="./style.css">
+	<!--Import jQuery before materialize.js-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</head>
+
+<body>
+	<nav>
+		<div id="header" class="nav-wrapper indigo darken-4">
+			<img id="myLogo" src="./images/ideal-meal-logo-red.jpg" class="brand-logo white-text"></img>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+			</ul>
+		</div>
+	</nav>
+
+	<!-- START BODY MAIN CONTENT -->
+	<div id="splash-body-background">
+		<div class="container">
+			<div id="body-container" class="row grey lighten-3 z-depth-4">
+
+				<!-- START FORM ************************************************ -->
+				<div class="col s12 m6">
+					<div class="col s12 form-header">
+						<h4 id="form-header-text">Search for the perfect meal...</h4>
+					</div>
+
+					<form name="requestRecipeForm" id="user-input-form" class="col s12" action="#">
+						<div class="row">
+							<div class="col s12 input-field form-component">
+								<i class="material-icons prefix">thumb_up</i>
+								<input placeholder="Ex. Chicken" id="include-ingredients" type="text" class="validate" required>
+								<label for="include-ingredients">Includes:</label>
+							</div>
+
+							<div class="col s12 input-field">
+								<i class="fa fa-cutlery small prefix" aria-hidden="true"></i>
+								<select id="multiple-diet-type" multiple="multiple">
+									<option value"" disabled selected>none selected</option>
+									<option id="balanced" value="balanced">Balanced</option>
+									<option id="low-sodium" value="Low-Sodium">Low-Sodium</option>
+									<option id="low-carb" value="Low-Carb">Low-Carb</option>
+									<option id="low-fat" value="Low-Fat">Low-Fat</option>
+									<option id="high-protein" value="High-Protein">High-Protein</option>
+									<option id="high-fiber" value="High-Fiber">High-Fiber</option>
+								</select>
+								<label>Diet type:</label>
+							</div>
+
+							<div class="col s12 input-field">
+								<i class="fa fa-ambulance small prefix" aria-hidden="true"></i>
+								<select id="multiple-health-requirements" multiple>
+									<option value"" disabled selected>none selected</option>
+									<option id="vegetarian" value="Vegetarian">Vegetarian</option>
+									<option id="vegan" value="Vegan">Vegan</option>
+									<option id="paleo" value="Paleo">Paleo</option>
+									<option id="low-sugar" value="Low-Sugar">Low-Sugar</option>
+									<option id="fat-free" value="Fat-Free">Fat-Free</option>
+									<option id="dairy-free" value="Dairy-Free">Dairy-Free</option>
+									<option id="gluten-free" value="Gluten-Free">Gluten-Free</option>
+									<option id="peanut-free" value="Peanut-Free">Peanut-Free</option>
+									<option id="egg-free" value="egg-free">Egg-Free</option>
+									<option id="wheat-free" value="Wheat-Free">Wheat-Free</option>
+									<option id="shellfish-free" value="Shellfish-Free">Shellfish-Free</option>
+									<option id="fish-free" value="Fish-Free">Fish-Free</option>
+									<option id="soy-free" value="Soy-Free">Soy-Free</option>
+								</select>
+								<label>Health Restrictions:</label>
+							</div>
+						</div>
+					</form>
+
+					<div class="col s12 search-btn-div">
+						<button id="splash-search-btn" class="btn waves-effect waves-light indigo darken-4 btn-large" type="submit" name="action">Search Recipes
+							<i class="material-icons right">send</i>
+						</button>
+					</div>
+				</div>
+
+				<!-- START CARD ************************************************ -->
+				<div class="col 12 m6">
+
+					<div class="row">
+						<div id="recipe-card" class="card col s12">
+
+							<div id="recipeSpot" class="card-image waves-effect waves-block waves-light ">
+								<img id="recipeArt" class="activator" src="images/chicken_saltimbocca.jpg">
+							</div>
+
+							<div class="card-content">
+								<span id="cardLabel" class="card-title activator grey-text text-darken-4">Recipe Name<i class="material-icons right">more_vert</i></span>
+								<h6 class="cardItemsLabelFront">Diet Type: <span id="cardDiet" class="cardFrontValues"</span></h6>
+								<h6 class="cardItemsLabelFront">Heath Requirements: <span id="cardHealth" class="cardFrontValues"></span></h6>
+								<h6 class="cardItemsLabelFront">Total Calories: <span id="cardCalories" class="cardFrontValues"></span></h6>
+								<h6 class="cardItemsLabelFront">Calories Per Serving: <span id="cardCPS" class="cardFrontValues"></span></h6>
+								<h6 class="cardItemsLabelFront">Total Servings: <span id="cardServings" class="cardFrontValues"></span></h6>
+							</div>
+
+								<!-- START CARD REVEAL -->
+								<div class="card-reveal">
+									<span id="revealLabel" class="card-title grey-text text-darken-4">Recipe Label<i class="material-icons right">close</i></span>
+									<h6 id="ingredientsLabel"><strong>Ingredients</strong></h6>
+									<hr>
+									<ul id="ingredientsListAll">
+									</ul>
+									<hr>
+									<h6><a class="cooking-instructions" href="how-to-cook" action="#" target="blank">How To Cook</a></h6>
+									<h6>Source: <span id="recipe-source"></span></h6>
+								</div>
+						</div>
+
+						<div class="col s12">
+							<button id="splash-next-btn" class="btn waves-effect waves-light indigo darken-4 btn-large" type="submit" name="action">Next Recipe
+								<i class="material-icons right">send</i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- START FOOTER -->
+	<div class="row">
+		<div id="footer" class="col s12 indigo darken-3">
+			<p class="legal-line white-text"> © 2017 scott dickscheid</p>
+		</div>
+	</div>
+
+</body>
+<script src='./app.js'></script>
+</html>
